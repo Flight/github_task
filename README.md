@@ -1,5 +1,5 @@
-# Concrete Platform
-Test task for Concrete Platform
+# Repos for user [![Build Status](https://travis-ci.org/Flight/github_task.svg?branch=master)](https://travis-ci.org/Flight/github_task)
+Small browser based application which uses GitHub's API to show the repositories for a given user
 
 ## Quick start for developers
 Project uses node + Gulp for fast developing.
@@ -9,7 +9,7 @@ To install node: https://nodejs.org/en/
 Then open your favorite Terminal and run these commands.
 
 ```sh
-$ npm install -g gulp
+$ npm install --global gulp-cli
 $ npm install
 ```
 

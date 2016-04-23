@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
-var scsslint = require('gulp-scss-lint');
+var sassLint = require('gulp-sass-lint');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
@@ -35,7 +35,9 @@ gulp.task('js:watch', function () {
 
 gulp.task('scss', function() {
     return gulp.src(PROJECT_PATTERNS.scss)
-        .pipe(scsslint())
+        .pipe(sassLint())
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError())
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(autoprefixer('last 2 version'))
@@ -44,7 +46,9 @@ gulp.task('scss', function() {
 });
 gulp.task('scss:lint', function() {
     return gulp.src(PROJECT_PATTERNS.scss)
-        .pipe(scsslint());
+        .pipe(sassLint())
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError());
 });
 gulp.task('scss:watch', function () {
     gulp.watch(PROJECT_PATTERNS.scss, ['scss']);
