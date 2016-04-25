@@ -1,0 +1,16 @@
+@import 'libs/all';
+
+html {
+    min-width: 320px;
+}
+
+.users-form {
+    .users-input {
+        display: inline-block;
+        margin-bottom: 10px;
+        width: 300px;
+    }
+    .btn {
+        vertical-align: top;
+    }
+}

@@ -4,12 +4,15 @@
     },
     "extends": "eslint:recommended",
     "globals": {
-        "require": false
+        "require": false,
+        "jQuery": false,
+        "_": false
     },
     "rules": {
         "indent": [
             "error",
-            4
+            4,
+            { "SwitchCase": 1 }
         ],
         "linebreak-style": [
             "error",

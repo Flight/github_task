@@ -14,7 +14,10 @@ var PROJECT_PATH = {
     'js': PROJECT_ROOT + '/static/js/'
 };
 var PROJECT_PATTERNS = {
-    'scss': PROJECT_PATH.scss + '**/*.scss',
+    'scss': [
+        PROJECT_PATH.scss + '**/*.scss',
+        '!' + PROJECT_PATH.scss + '**/*.min.scss'
+    ],
     'js': [
         PROJECT_PATH.js + '**/*.js',
         '!' + PROJECT_PATH.js + '**/*.min.js',

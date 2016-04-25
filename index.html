@@ -1,0 +1,113 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Github users stars</title>
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+
+<body>
+    <div class="container js-github-users-compare">
+        <div class="col-sm-20">
+            <h1>Github users compare</h1>
+            <form action="#" class="js-users-form users-form form-inline">
+                <input type="text" placeholder="Please enter users, separate using comma" class="form-control users-input js-users-input" required>
+                <input type="submit" value="submit" class="btn btn-primary">
+            </form>
+
+            <i>test, o-zander, Flight, FinalAngel, lory87, stefanfoulis, mkoistinen,  eligrey , fabien-michel, ollb, jakob-o</i>
+        </div>
+
+
+        <div id="no-users-found" class="data-target">
+            <!-- User repositories goes here -->
+        </div>
+
+        <div id="user-repositories" class="data-target">
+            <!-- User repositories goes here -->
+        </div>
+
+        <div id="users-compare" class="data-target">
+            <!-- Users comparing goes here -->
+        </div>
+    </div>
+
+    <script type="text/template" id="no-users-found-template">
+        <p class="alert alert-danger">
+            <% if (userNames.length === 1) { %>
+                User <%= userNames %> doesn't exist
+            <% } else { %>
+                Users <%= userNames.join(', ') %> doesn't exist
+            <% } %>
+        </p>
+    </script>
+
+    <script type="text/template" id="user-repositories-template">
+        <% if (repositoriesInfo.length) { %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Repository name</th>
+                        <th>Stars Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% _.each(repositoriesInfo, function (repositoryInfo) { %>
+                        <tr>
+                            <td><%= repositoryInfo.name %></td>
+                            <td><%= repositoryInfo.starsCount %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="alert alert-warning">
+                This user has no public repositories yet.
+            </div>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="users-compare-template">
+        <% if (usersInfo[0].starsOverallCount !== 0) { %>
+            <%
+                var usersWithMostStarts = [];
+                usersInfo.forEach(function (userInfo) {
+                    if (userInfo.starsOverallCount === usersInfo[0].starsOverallCount) {
+                        usersWithMostStarts.push(userInfo.userName);
+                    }
+                });
+            %>
+            <div class="alert alert-success">
+                <b><%= usersWithMostStarts.join(', ') %></b> has the most stars (<b><%= usersInfo[0].starsOverallCount %></b>)
+            </div>
+        <% } else { %>
+            <div class="alert alert-warning">
+                There are no stars for any of those users.
+            </div>
+        <% } %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Stars Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(usersInfo, function (userInfo) { %>
+                    <tr>
+                        <td><%= userInfo.userName %></td>
+                        <td><%= userInfo.starsOverallCount %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="static/js/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="static/js/gitHubUsersCompare.js"></script>
+    <script src="static/js/main.js"></script>
+</body>
+</html>
