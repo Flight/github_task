@@ -1,5 +1,5 @@
 # Repos for user [![Build Status](https://travis-ci.org/Flight/github_task.svg?branch=master)](https://travis-ci.org/Flight/github_task)
-Small browser based application which uses GitHub's API to show the repositories for a given user
+Small browser based application which uses GitHub's API to show the repositories for a given user or comparing the number of stars on the own repos for multiple users.
 
 ## Quick start for developers
 Project uses node + Gulp for fast developing.
